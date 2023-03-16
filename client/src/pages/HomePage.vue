@@ -1,6 +1,6 @@
 <template>
     <div>
-        Home Page Banner
+        CoursePal
     </div>
     <div>
         Home Page Feature Section
