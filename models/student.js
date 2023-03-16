@@ -11,12 +11,33 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Student.hasMany(models.Course,{
+        foreignKey:'courseId',
+        as: 'courses',
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
+      })
+      Student.hasMany(models.Grade,{
+        foreignKey:'gradeId',
+        as: 'grades',
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
+      })
     }
   }
   Student.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    courseId: DataTypes.INTEGER
+    courseId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'courseId',
+      onDelete: 'CASCADE',
+      references: {
+        model: 'courses',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'Student',

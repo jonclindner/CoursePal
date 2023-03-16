@@ -11,10 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Grade.belongsTo(models.Student, {
+        foreignKey: 'studentId',
+        as: 'student',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+
+      })
+      
     }
   }
   Grade.init({
-    studentId: DataTypes.INTEGER,
+    studentId: {
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      field: 'studentId',
+      onDelete: 'CASCADE',
+      references:{
+        model: 'students',
+        key:'id'
+      }
+    },
     score: DataTypes.INTEGER,
     letterGrade: DataTypes.STRING
   }, {
