@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="">
-      <form @submit="">
-        <input :value="" @input="" />
+        <div>
+      <form >
+        <input  />
         <button>Add Course to Catalog</button>
       </form>
    
