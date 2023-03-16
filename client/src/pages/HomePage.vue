@@ -1,5 +1,7 @@
 <template>
+
     <div class="homePageFeature">
+
         Home Page Feature Section
     </div>
     <div>
