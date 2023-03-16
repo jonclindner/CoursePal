@@ -1,12 +1,12 @@
 <template>
-    <div>
-        Home Page Banner
-    </div>
-    <div>
+    <div class="homePageFeature">
         Home Page Feature Section
     </div>
     <div>
-        Home Page Buttons
+        <button>View Courses</button>
+        <button>View Students</button>
+        <button>Add Courses</button>
+        <button>Add Students</button>
     </div>
 
 </template>
@@ -15,10 +15,29 @@
 <script>
 export default {
     name: 'HomePage',
+    components: {
+    }
 }
 </script>
     
     
 <style>
+    .homePageCtn {
+        width: 100%;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+    }
 
+    .homePageFeature {
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        background-color: beige;
+    }
 </style>
