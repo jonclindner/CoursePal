@@ -3,9 +3,9 @@
         Home Page Feature Section
     </div>
     <div>
-        <button>View Courses</button>
-        <button>View Students</button>
-        <button>Add Courses</button>
+        <button @click="$router.push('/courses')">View Courses</button>
+        <button @click="$router.push('/students')">View Students</button>
+        <button >Add Courses</button>
         <button>Add Students</button>
     </div>
 
