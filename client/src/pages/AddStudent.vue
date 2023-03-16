@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="">
-      <form @submit="">
-        <input :value="" @input="" />
+      <form>
+        <input />
         <button>Add Student to Database</button>
       </form>
    
