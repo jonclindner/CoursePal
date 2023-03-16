@@ -7,8 +7,8 @@
     <div>
         <button @click="$router.push('/courses')">View Courses</button>
         <button @click="$router.push('/students')">View Students</button>
-        <button >Add Courses</button>
-        <button>Add Students</button>
+        <button @click="$router.push('/courses/add')">Add Courses</button>
+        <button @click="$router.push('/students/add')">Add Students</button>
     </div>
 
 </template>
