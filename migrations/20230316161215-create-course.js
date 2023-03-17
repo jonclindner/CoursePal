@@ -15,19 +15,15 @@ module.exports = {
       courseNumber: {
         type: Sequelize.STRING
       },
-      studentId: {
-        type: Sequelize.INTEGER
-      },
-      gradeId: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       }
     });
   },

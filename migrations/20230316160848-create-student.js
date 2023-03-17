@@ -15,16 +15,15 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      courseId: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: new Date()
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE, 
+        defaultValue: new Date()
       }
     });
   },

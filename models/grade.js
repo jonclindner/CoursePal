@@ -18,17 +18,32 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE'
 
       })
+      Grade.belongsTo(models.Course, {
+        foreignKey: 'courseId',
+        as: 'course',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+
+      })
       
     }
   }
   Grade.init({
     studentId: {
       type:DataTypes.INTEGER,
-      allowNull: false,
       field: 'studentId',
       onDelete: 'CASCADE',
       references:{
         model: 'students',
+        key:'id'
+      }
+    },
+    courseId: {
+      type:DataTypes.INTEGER,
+      field: 'courseId',
+      onDelete: 'CASCADE',
+      references:{
+        model: 'courses',
         key:'id'
       }
     },
