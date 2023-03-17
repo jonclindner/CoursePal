@@ -1,4 +1,4 @@
-const { Course, Student, Grade } = require('../models')
+const { Course, Student, Grade, Course_List } = require('../models')
 const { Op, fn, col } = require('sequelize')
 
 const CreateCourse = async (req, res) => {
@@ -15,6 +15,16 @@ const GetCourses = async (req, res) => {
   try {
     const courses = await Course.findAll()
     res.send(courses)
+  } catch (error) {
+    throw error
+  }
+}
+
+const GetCourseByStudentId = async (req, res) => {
+  try {
+    let studentId = req.params.student_id
+    let data = await Course_List.findByPk(studentId)
+    res.send(data)
   } catch (error) {
     throw error
   }
@@ -49,6 +59,8 @@ module.exports = {
   CreateCourse,
   GetCourses,
   UpdateCourse,
-  DeleteCourse
+  DeleteCourse,
+  GetCourseByStudentId
+
 
 }
