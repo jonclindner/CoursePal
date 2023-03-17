@@ -33,7 +33,7 @@
     },
     methods: {
       async handleSubmit() {
-        try {
+       
           const response = await axios.post('http://localhost:3001/api/course/createcourse', this.course);
           if (response.status === 200) {
             this.message = "Course has been added to the catalog!";
@@ -44,10 +44,7 @@
           } else {
             throw new Error("Error: Course was not added to catalog");
           }
-        } catch (error) {
-          console.error(error);
-          this.message = "An error occurred while adding the course.";
-        }
+        
       },
     },
   };
