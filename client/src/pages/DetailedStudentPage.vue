@@ -5,7 +5,7 @@
             <div class="flex flex-wrap justify-around">
                 <div class="flex flex-wrap" v-for="course in courses" :key="course.id" @click="navigateCourse(course.id)">
                     <!-- Map goes here -->
-                    <div class=" w-[275px] h-[250px] bg-slate-200 m-2 flex flex-wrap items-center hover:scale-110 hover:cursor-pointer transition-transform">
+                    <div class=" w-[275px] h-[250px] bg-slate-200 m-2 flex flex-wrap items-center hover:scale-110 hover:cursor-pointer transition-transform shadow-2xl">
                     <ViewCourses :course="course"/>
                     </div>
                 </div>
