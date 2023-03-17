@@ -11,7 +11,17 @@ const CreateCourse = async (req, res) => {
 	}
 }
 
+const GetCourses = async (req, res) => {
+  try {
+    const courses = await Course.findAll()
+    res.send(courses)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   CreateCourse,
+  GetCourses
 
 }
