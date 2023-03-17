@@ -17,30 +17,26 @@
     
 <script>
 import ViewCourses from '../components/ViewCourses.vue'
+import axios from 'axios'
 export default {
     name: 'CoursePage',
     components: {
         ViewCourses
     },
     data: () => ({
-        courses: [{
-            id: 101,
-            name: 'BIO',
-        }, {
-            id: 220,
-            name: 'LIT',
-        }, {
-            id: 309,
-            name: 'MATH',
-        },{
-            id: 619,
-            name: 'SCI',
-        }
-        ]
+        courses: []
     }),
+    mounted() {
+        this.getCourses()
+    },
     methods: {
         navigateCourse(id) {
             this.$router.push(`/courses/${id}`)
+        },
+        async getCourses() {
+            const response = await axios.get(`http://localhost:3001/api/course/`)
+            console.log(response);
+            this.courses = response.data
         }
     }
 }
