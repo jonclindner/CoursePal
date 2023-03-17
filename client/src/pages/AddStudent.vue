@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="formWrapper">
       <h1>Add a Student</h1>
       <form @submit.prevent="handleSubmit">
         <label>
@@ -19,53 +19,44 @@
   </template>
   
   <script>
-export default {
-  data() {
-    return {
-      student: {
-        name: "",
-        email: "",
-      },
-      message: "",
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      try {
-        const response = await fetch("/api/addStudent", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(this.student),
-        });
-        if (response.ok) {
-          this.message = "Student added successfully!";
-          this.student = {
-            name: "",
-            email: "",
-          };
-        } else {
-          throw new Error("Failed to add student");
-        }
-      } catch (error) {
-        console.error(error);
-        this.message = "An error occurred while adding the student.";
-      }
+  import axios from 'axios'
+  
+  export default {
+    data() {
+      return {
+        student: {
+          name: "",
+          email: "",
+        },
+        message: "",
+      };
     },
-  },
-};
-</script>
-    
-<!--   
-    
-    <script>
-        export default { 
-            name: 'AddStudent',
+    methods: {
+      async handleSubmit() {
+        try {
+          const response = await axios.post('http://localhost:3001/api/student/createstudent', this.student);
+          if (response.status === 200) {
+            this.message = "Student added successfully!";
+            this.student = {
+              name: "",
+              email: "",
+            };
+          } else {
+            throw new Error("Failed to add student");
+          }
+        } catch (error) {
+          console.error(error);
+          this.message = "An error occurred while adding the student.";
         }
-    </script>
-     -->
+      },
+    },
+  };
+  </script>
+  
     
+
     <style>
-    
+    .formWrapper {
+        margin-top: 150px;
+  }
     </style>
