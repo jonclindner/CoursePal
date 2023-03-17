@@ -11,6 +11,17 @@ const CreateGrade = async (req, res) => {
 	}
 }
 
+const GetGrades = async (req, res) => {
+  try {
+    const grades = await Grade.findAll()
+    res.send(grades)
+  } catch (error) {
+    throw error
+  }
+}
+
+
 module.exports = {
   CreateGrade,
+  GetGrades
 }
