@@ -24,12 +24,12 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'cascade',
         onUpdate: 'cascade'
       })
-      Student.hasMany(models.Course,{
-        foreignKey:'courseId',
-        as: 'course_list',
-        onDelete: 'cascade',
-        onUpdate: 'cascade'
-      })
+      // Student.hasMany(models.Course,{
+      //   foreignKey:'courseId2',
+      //   as: 'course_list',
+      //   onDelete: 'cascade',
+      //   onUpdate: 'cascade'
+      // })
       // Student.belongsToMany(models.Grade,{
       //   foreignKey:'gradeId',
       //   as: 'grades',
