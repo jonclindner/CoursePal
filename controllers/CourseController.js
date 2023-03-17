@@ -20,8 +20,22 @@ const GetCourses = async (req, res) => {
   }
 }
 
+const UpdateCourse = async (req, res) => {
+  try {
+    let courseId = req.params.course_id
+    let updatedCourse = await Course.update(req.body, {
+      where: { id: courseId },
+      returning: true
+    })
+    res.send(updatedCourse)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   CreateCourse,
-  GetCourses
+  GetCourses,
+  UpdateCourse
 
 }
