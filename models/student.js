@@ -18,12 +18,12 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'cascade',
         onUpdate: 'cascade'
       })
-      Student.hasMany(models.Grade,{
-        foreignKey:'gradeId',
-        as: 'grades',
-        onDelete: 'cascade',
-        onUpdate: 'cascade'
-      })
+      // Student.hasMany(models.Grade,{
+      //   foreignKey:'gradeId1',
+      //   as: 'grades',
+      //   onDelete: 'cascade',
+      //   onUpdate: 'cascade'
+      // })
       // Student.hasMany(models.Course,{
       //   foreignKey:'courseId2',
       //   as: 'course_list',

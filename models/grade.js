@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   Grade.init({
     studentId: {
       type:DataTypes.INTEGER,
-      field: 'student_Id1',
+      field: 'studentId',
       onDelete: 'CASCADE',
       references:{
         model: 'students',

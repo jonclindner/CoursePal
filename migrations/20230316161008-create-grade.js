@@ -12,6 +12,9 @@ module.exports = {
       studentId: {
         type: Sequelize.INTEGER
       },
+      courseId: {
+        type: Sequelize.INTEGER
+      },
       score: {
         type: Sequelize.INTEGER
       },
