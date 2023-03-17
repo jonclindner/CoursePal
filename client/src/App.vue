@@ -1,9 +1,9 @@
 <template>
-  <header>
-    <NavBar />
-  </header>
-  <div>
-    <router-view></router-view>
+  <div class="min-h-screen flex flex-col text-lg">
+    <header><NavBar /></header>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
