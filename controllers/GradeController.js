@@ -33,9 +33,22 @@ const UpdateGrade = async (req, res) => {
   }
 }
 
+const DeleteGrade = async (req, res) => {
+  try {
+    let gradeId = req.params.grade_id
+    await Grade.destroy({ 
+      where: { id: gradeId }
+     })
+    res.send({ message: `Deleted Student with an ID of ${gradeId}!` })
+  } catch (error) {
+    throw error
+  }
+}
+
 
 module.exports = {
   CreateGrade,
   GetGrades,
-  UpdateGrade
+  UpdateGrade,
+  DeleteGrade
 }
