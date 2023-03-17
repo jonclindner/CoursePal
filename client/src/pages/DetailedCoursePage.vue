@@ -17,30 +17,22 @@
     
 <script>
 import ViewStudents from '../components/ViewStudents.vue'
+import axios from 'axios';
 export default {
     name: 'DetailedCoursePage',
     components: {
         ViewStudents
     },
     data: () => ({
-        students: [{
-            id: 101,
-            name: 'Tyler',
-        }, {
-            id: 220,
-            name: 'Bob',
-        }, {
-            id: 309,
-            name: 'Daniel',
-        }, {
-            id: 619,
-            name: 'Manny',
-        }
-        ]
+        students: []
     }),
     methods: {
         navigateStudent(id) {
             this.$router.push(`/students/${id}`)
+        },
+        async getCourseById(id) {
+            const response = await axios.get(`http://localhost:3001/api/course/${id}`)
+            console.log(response);
         }
     }
 }
