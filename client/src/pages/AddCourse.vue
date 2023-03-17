@@ -4,11 +4,11 @@
       <form @submit.prevent="handleSubmit">
         <label>
           Name:
-          <input type="text" :value="course.name" @input="course.name = $event.target.value" required />
+          <input type="text" :value="course.courseName" @input="course.courseName = $event.target.value" required />
         </label>
         <label>
           Number:
-          <input type="text" :value="course.number" @input="course.number = $event.target.value" required />
+          <input type="text" :value="course.courseNumber" @input="course.courseNumber = $event.target.value" required />
         </label>
         <button type="submit">Submit</button>
       </form>
@@ -25,8 +25,8 @@
     data() {
       return {
         course: {
-          name: "",
-          number: "",
+          courseName: "",
+          courseNumber: "",
         },
         message: "",
       };
@@ -34,12 +34,12 @@
     methods: {
       async handleSubmit() {
         try {
-          const response = await axios.post("'http://localhost:3001/api/course/createcourse", this.course);
+          const response = await axios.post('http://localhost:3001/api/course/createcourse', this.course);
           if (response.status === 200) {
             this.message = "Course has been added to the catalog!";
             this.course = {
-              name: "",
-              number: "",
+              courseName: "",
+              courseNumber: "",
             };
           } else {
             throw new Error("Error: Course was not added to catalog");
