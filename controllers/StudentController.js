@@ -20,7 +20,21 @@ const GetStudents = async (req, res) => {
   }
 }
 
+const UpdateStudent = async (req, res) => {
+  try {
+    let studentId = req.params.student_id
+    let updatedStudent = await Student.update(req.body, {
+      where: { id: studentId },
+      returning: true
+    })
+    res.send(updatedStudent)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
 	CreateStudent,
   GetStudents,
+  UpdateStudent
 }
