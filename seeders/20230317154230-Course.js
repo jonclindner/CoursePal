@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface) {
-		let grades = [
+		let courses = [
 			{ courseName: 'Intro to Computer Science', courseNumber: 'CS 101' },
 			{ courseName: 'English Composition', courseNumber: 'ENG 101' },
 			{ courseName: 'Principles of Economics', courseNumber: 'ECON 101' },
@@ -43,10 +43,10 @@ module.exports = {
 				courseNumber: 'AFAM 101',
 			},
 		]
-		await queryInterface.bulkInsert('grades', grades)
+		await queryInterface.bulkInsert('courses', courses)
 	},
 
 	async down(queryInterface, Sequelize) {
-		await queryInterface.bulkDelete('grades')
+		await queryInterface.bulkDelete('courses')
 	},
 }
