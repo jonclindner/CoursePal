@@ -1,4 +1,4 @@
-const { Course, Student, Grade } = require('../models')
+const { Course, Student, Grade, Course_List } = require('../models')
 const { Op, fn, col } = require('sequelize')
 
 const CreateCourse = async (req, res) => {
@@ -49,6 +49,7 @@ module.exports = {
   CreateCourse,
   GetCourses,
   UpdateCourse,
-  DeleteCourse
+  DeleteCourse,
+
 
 }

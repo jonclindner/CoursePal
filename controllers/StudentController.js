@@ -12,43 +12,63 @@ const CreateStudent = async (req, res) => {
 }
 
 const GetStudents = async (req, res) => {
-  try {
-    const students = await Student.findAll()
-    res.send(students)
-  } catch (error) {
-    throw error
-  }
+	try {
+		const students = await Student.findAll()
+		res.send(students)
+	} catch (error) {
+		throw error
+	}
+}
+
+const GetCoursesByStudentId = async (req, res) => {
+	// console.log(req.params.student_id)
+	try {
+		let studentId = parseInt(req.params.student_id)
+		let student = await Student.findByPk(studentId, {
+			include: [
+				{
+					model: Course,
+					as: 'courses',
+					through: {attributes: ['score']},
+				},
+			],
+		})
+		console.log(student)
+		res.send(student)
+	} catch (error) {
+		throw error
+	}
 }
 
 const UpdateStudent = async (req, res) => {
-  try {
-    let studentId = req.params.student_id
-    let updatedStudent = await Student.update(req.body, {
-      where: { id: studentId },
-      returning: true
-    })
-    res.send(updatedStudent)
-  } catch (error) {
-    throw error
-  }
+	try {
+		let studentId = req.params.student_id
+		let updatedStudent = await Student.update(req.body, {
+			where: { id: studentId },
+			returning: true,
+		})
+		res.send(updatedStudent)
+	} catch (error) {
+		throw error
+	}
 }
 
-
 const DeleteStudent = async (req, res) => {
-  try {
-    let studentId = req.params.student_id
-    await Student.destroy({ 
-      where: { id: studentId }
-     })
-    res.send({ message: `Deleted Student with an ID of ${studentId}!` })
-  } catch (error) {
-    throw error
-  }
+	try {
+		let studentId = req.params.student_id
+		await Student.destroy({
+			where: { id: studentId },
+		})
+		res.send({ message: `Deleted Student with an ID of ${studentId}!` })
+	} catch (error) {
+		throw error
+	}
 }
 
 module.exports = {
 	CreateStudent,
-  GetStudents,
-  UpdateStudent,
-  DeleteStudent
+	GetStudents,
+	UpdateStudent,
+	DeleteStudent,
+	GetCoursesByStudentId,
 }
