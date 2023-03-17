@@ -20,16 +20,6 @@ const GetCourses = async (req, res) => {
   }
 }
 
-const GetCourseByStudentId = async (req, res) => {
-  try {
-    let studentId = req.params.student_id
-    let data = await Course_List.findByPk(studentId)
-    res.send(data)
-  } catch (error) {
-    throw error
-  }
-}
-
 const UpdateCourse = async (req, res) => {
   try {
     let courseId = req.params.course_id
@@ -60,7 +50,6 @@ module.exports = {
   GetCourses,
   UpdateCourse,
   DeleteCourse,
-  GetCourseByStudentId
 
 
 }
