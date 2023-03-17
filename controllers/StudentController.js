@@ -33,8 +33,22 @@ const UpdateStudent = async (req, res) => {
   }
 }
 
+
+const DeleteStudent = async (req, res) => {
+  try {
+    let studentId = req.params.student_id
+    await Student.destroy({ 
+      where: { id: studentId }
+     })
+    res.send({ message: `Deleted Student with an ID of ${studentId}!` })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
 	CreateStudent,
   GetStudents,
-  UpdateStudent
+  UpdateStudent,
+  DeleteStudent
 }
