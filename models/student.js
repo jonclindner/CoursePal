@@ -11,9 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Student.hasMany(models.Course,{
+      Student.belongsToMany(models.Course,{
         foreignKey:'courseId',
         as: 'courses',
+        through: models.Course_List,
         onDelete: 'cascade',
         onUpdate: 'cascade'
       })
@@ -23,22 +24,26 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'cascade',
         onUpdate: 'cascade'
       })
+      Student.hasMany(models.Course,{
+        foreignKey:'courseId',
+        as: 'course_list',
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
+      })
+      // Student.belongsToMany(models.Grade,{
+      //   foreignKey:'gradeId',
+      //   as: 'grades',
+      //   through: models.CourseList,
+      //   onDelete: 'cascade',
+      //   onUpdate: 'cascade'
+      // })
     }
   }
   Student.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    courseId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field: 'courseId',
-      onDelete: 'CASCADE',
-      references: {
-        model: 'courses',
-        key: 'id'
-      }
-    }
-  }, {
+  }, 
+  {
     sequelize,
     modelName: 'Student',
     tableName: 'students'
